@@ -8,6 +8,7 @@
 body {
     font-family: sans-serif;
     /* height: 100vh; */
+    overflow: hidden; /* review */
 }
 
 button, input {
@@ -27,14 +28,15 @@ li {
     list-style: none;
 }
 
-
-
 .container {
     display: grid;
     grid-template-columns: 20% 80%;
-    grid-row: 3rem calc(100% - 3rem);
-    max-height: 100vh;
+    grid-template-rows: 10rem 1fr; 
+    min-height: 100vh;
 }
+
+
+        /* header section start */
 
 .header {
     /* grid-column: 2 / 3; */
@@ -42,38 +44,43 @@ li {
     background-color: aliceblue;
     padding: 1rem 2rem;
     display: inline-grid;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 40% 60%;
     align-items: center;
 }
 
 .header .top {
-    display: grid;
+    align-self: start; /* review */
+    display: inline-grid;
     grid-template: 1fr / 2fr 1fr ;
 }
 
 .search input {
-    width: 70%;
+    width: 85%;
     border-radius: 1rem;
     border: none;
     background-color: var(--clr-offwhite);
-    padding: 3px 10px;
+    padding: 6px 12px;
 }
 
 .search input:focus {
-    border: 1px solid gray;
-    outline: none;
+    outline: 1px solid gray;
 }
 
 
 .header .user {
-    display: grid;
+    display: inline-grid;
     grid-auto-flow: column;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: end;
+    gap: 1.5rem;
+    margin-right: 2.2rem;
 }
 
- img {
+.user h3 {
+    font-size: .9rem;
+}
+
+img {
     border-radius: 50%;
 }
 
@@ -96,12 +103,19 @@ li {
     align-self: center;
 }
 
+.profile-name p {
+    font-weight: bold;
+    font-size: .7rem;
+    line-height: 1.5;
+}
+
 .profile-name h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    line-height: 1.3;
 }
 
 .bottom .buttons {
-    align-self: end;
+    align-self: center;
     display: inline-grid;
     grid-auto-flow: column;
     justify-content: end;
@@ -109,27 +123,31 @@ li {
 }
 
 button {
-    padding: .5rem;
+    padding: .7rem;
     width: 90px;
     border-radius: 2rem;
     background-color: var(--clr-blue);
     color: #fff;
     border: none;
+    font-weight: bold;
 }
 
-
-
           /* header section end */
+
 
           /* sidebar section start */
 
 .sidebar {
-    grid-column: 1 / 2;
+    grid-column: 1;
     grid-row: 1 / 3;
     background-color: var(--clr-blue);
-
     color: #fff;
 }
+
+        /* sidebar section end */
+
+
+        /* main content start */
 
 .main {
     grid-column: 2;
@@ -138,6 +156,7 @@ button {
     background-color: var(--clr-offwhite);
     display: inline-grid;
     grid-template-columns: 1fr 250px;
+    /* overflow: visible; */
 }
 
 .section-title {
@@ -147,9 +166,10 @@ button {
 
 .cards-container {
     display: inline-grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 200px;
     gap: 1rem;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 .project-cards {
@@ -157,35 +177,45 @@ button {
     padding: 1.5rem 1rem;
     border-radius: 6px;
     box-shadow: 2px 2px 3px #bbb;
-    display: inline-grid;
-    align-items: start;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-left: 8px solid orange;
+}
 
+.card-text h3 {
+    line-height: 1.5;
+}
+
+.card-text p {
+    color: var(--clr-text-light);
 }
 
 .card-action {
-    align-self: end;
-    justify-self: end;
     display: inline-grid;
+    justify-content: end;
     grid-auto-flow: column;
     gap: 10px;
 }
 
+        /* main section end */
+
+
+        /* aside start */
 
 .aside {
-    display: inline-grid;
-    gap: 1rem;
+    margin-left: 1rem;
 }
 
 .aside-group {
-    margin-left: 1rem;
+    margin-bottom: 1.3rem;
 }
 
 .aside-card {
     background: #fff;
     border-radius: 6px;
     box-shadow: 2px 2px 3px #bbb;
-    padding: 1.5rem 1rem;
+    padding: 1.3rem 1.3rem;
 }
 
 .aside-card hr {
@@ -200,3 +230,21 @@ button {
     font-size: 12px;
     color: var(--clr-text-light);
 }
+
+.aside-card ul {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1.16rem;
+}
+
+.aside-card ul li {
+    display: inline-flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.aside-card .text {
+    line-height: 1.3;
+}
+
+        /* aside end */
